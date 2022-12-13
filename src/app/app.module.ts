@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
 import { MaterialSheetsModule } from '../material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule } from '@angular/material/icon';
+import { AddPersonComponent } from './components/add-person/add-person.component';
+import { DetailsComponent } from './components/details/details.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ListComponent } from './components/list/list.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -16,8 +18,13 @@ import { MatIconModule } from '@angular/material/icon';
     BrowserAnimationsModule,
     ReactiveFormsModule,
   ],
-  exports: [MatIconModule],
-  declarations: [AppComponent, HelloComponent],
+  declarations: [
+    AppComponent,
+    AddPersonComponent,
+    DetailsComponent,
+    NotFoundComponent,
+    ListComponent,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

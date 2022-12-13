@@ -1,20 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home';
-import { AuthGuard } from './_helpers';
+import { AddPersonComponent } from './components/add-person/add-person.component';
+import { DetailsComponent } from './components/details/details.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ListComponent } from './components/list/list.component';
 
-const accountModule = () =>
-  import('./account/account.module').then((x) => x.AccountModule);
-const usersModule = () =>
-  import('./users/users.module').then((x) => x.UsersModule);
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
-  { path: 'account', loadChildren: accountModule },
-
+  { path: 'list', component:ListComponent },
+  { path: '/details/:id', component: DetailsComponent },
+  { path: '/add', component: AddPersonComponent },
+  { path: '', redirectTo:'/list', pathMatch:'full'}
   // w przeciwnym wypadku powrót do home
-  { path: '**', redirectTo: '' },
+  { path: '**', component: NotFoundComponent },
+
 ];
 
 @NgModule({
