@@ -4,17 +4,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MaterialSheetsModule } from '../material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 @NgModule({
-  
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule,
-    MatToolbarModule,
-    MatIconModule,
+    MaterialSheetsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
   ],
