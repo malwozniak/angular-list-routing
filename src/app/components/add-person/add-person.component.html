@@ -2,4 +2,14 @@
   [formGroup]="formGroup"
   (ngSubmit)="onSubmit(formGroup.value)"
   class="form"
-></form>
+>
+  <mat-form-field class="form-element">
+    <input matInput placeholder="Imię" formControlName="name" />
+  </mat-form-field>
+  <mat-form-field class="form-element">
+    <input matInput placeholder="Nazwisko" formControlName="surname" />
+  </mat-form-field>
+  <mat-form-field class="form-element">
+    <input matInput placeholder="wiek" formControlName="age" />
+  </mat-form-field>
+</form>
