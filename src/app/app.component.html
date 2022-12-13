@@ -3,6 +3,6 @@
 </mat-toolbar>
 
 <div class="app-container">
-  <button [routerLink]="['/add-person']">Add</button>
   <router-outlet></router-outlet>
+  <button mat-button router-link="/add" color="accent">Add</button>
 </div>
