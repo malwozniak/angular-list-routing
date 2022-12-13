@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'add-person',
+  selector: 'add',
   templateUrl: './add-person.component.html',
   styleUrls: ['./add-person.component.scss'],
 })
