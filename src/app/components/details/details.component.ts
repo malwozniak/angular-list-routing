@@ -16,4 +16,8 @@ export class DetailsComponent implements OnInit {
       console.log(params);
     });
   }
+
+  public goHome() {
+    this.router.navigate(['/details', 2]);
+  }
 }
