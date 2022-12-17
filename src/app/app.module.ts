@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { MaterialSheetsModule } from '../material.module';
+import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddPersonComponent } from './components/add-person/add-person.component';
 import { DetailsComponent } from './components/details/details.component';
@@ -17,6 +18,7 @@ import { ListComponent } from './components/list/list.component';
     MaterialSheetsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    AppRoutingModule,
   ],
   declarations: [
     AppComponent,
