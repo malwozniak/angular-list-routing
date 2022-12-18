@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonService } from '../../service/person.service';
 
 @Component({
   selector: 'app-list',
@@ -6,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-
-  constructor() { }
+  myInfo$ = this._personService.myData;
+ 
+  constructor(  private _personService: PersonService) { }
 
   ngOnInit() {
   }

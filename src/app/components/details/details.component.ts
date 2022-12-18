@@ -1,6 +1,7 @@
 import { parallel } from '@angular/cdk/testing';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PersonService } from '../../service/person.service';
 
 @Component({
   selector: 'app-details',
@@ -8,7 +9,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  myInfo$ = this._personService.myData;
+
+  constructor(private _personService: PersonService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {

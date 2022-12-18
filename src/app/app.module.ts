@@ -10,6 +10,7 @@ import { AddPersonComponent } from './components/add-person/add-person.component
 import { DetailsComponent } from './components/details/details.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ListComponent } from './components/list/list.component';
+import { LocalStorageRefService } from './service/local-storage-ref-service.service';
 @NgModule({
   imports: [
     BrowserModule,
@@ -27,6 +28,8 @@ import { ListComponent } from './components/list/list.component';
     NotFoundComponent,
     ListComponent,
   ],
+  // providers: [LocalStorageRefService],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}

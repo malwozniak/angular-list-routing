@@ -1,1 +1,13 @@
-<p>JUPI LIST</p>
+<button routerLink="/add">Add</button>
+
+<div *ngIf="myInfo$ | async as myInfo">
+  firstName: {{ myInfo?.firstName || 'no name set' }}
+  <br />
+  familyName: {{ myInfo?.familyName || 'no name set' }}
+
+  <br />
+  age: {{ myInfo?.age || 'no age set' }}
+  <br />
+  <hr />
+</div>
+<div></div>

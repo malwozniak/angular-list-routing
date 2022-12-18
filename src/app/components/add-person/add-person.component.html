@@ -1,24 +1,20 @@
 <mat-toolbar>
   <span>Podaj dane nowej osoby</span>
 </mat-toolbar>
-<form
-  [formGroup]="formGroup"
-  (ngSubmit)="onSubmit(formGroup.value)"
-  class="form"
->
+<form *ngIf="form" [formGroup]="form" class="form">
   <mat-form-field class="form-element">
     <mat-label>Imię</mat-label>
-    <input matInput formControlName="name" />
+    <input matInput formControlName="name" formGroupName="name" />
   </mat-form-field>
 
   <mat-form-field class="form-element">
     <mat-label>Nazwisko</mat-label>
-    <input matInput formControlName="surname" />
+    <input matInput formControlName="surname" formGroupName="surname" />
   </mat-form-field>
 
   <mat-form-field class="form-element">
     <mat-label>Age</mat-label>
-    <input matInput formControlName="age" />
+    <input matInput formControlName="age" formGroupName="age" />
   </mat-form-field>
   <mat-form-field>
     <span>Adres</span>
@@ -26,16 +22,16 @@
 
   <mat-form-field class="form-element">
     <mat-label>Miasto</mat-label>
-    <input matInput formControlName="city" />
+    <input matInput formControlName="city" formGroupName="city" />
   </mat-form-field>
   <mat-form-field class="form-element">
     <mat-label>Ulica</mat-label>
-    <input matInput formControlName="street" />
+    <input matInput formControlName="street" formGroupName="street" />
   </mat-form-field>
   <mat-form-field class="form-element">
     <mat-label>Kod pocztowy</mat-label>
-    <input matInput formControlName="zip" />
+    <input matInput formControlName="zip" formGroupName="zip" />
   </mat-form-field>
 
-  <button mat-button color="primary">Zapisz</button>
+  <button mat-button color="primary" routerLink="save()">Zapisz</button>
 </form>

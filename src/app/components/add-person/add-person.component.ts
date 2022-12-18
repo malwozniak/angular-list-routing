@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { PersonService } from '../../service/person.service';
 
 @Component({
   selector: 'add',
@@ -7,15 +8,52 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./add-person.component.scss'],
 })
 export class AddPersonComponent implements OnInit {
-  formGroup: FormGroup;
+  form: FormGroup;
   titleAlert: string = 'This field is required';
-  post: any = '';
+  myInfo$ = this._personService.myData;
+ 
+  constructor(
+    private formBuilder: FormBuilder,
+    private _personService: PersonService
+  ) {}
 
-  constructor(private formBuilder: FormBuilder) {}
+  ngOnInit() {
+    this._personService.clearAllLocalStorage();
+    this._initForm();
+  }
 
-  ngOnInit() {}
+  private _initForm() {
+    this.form = this.formBuilder.group({
+      firstName: '',
+      familyName: '',
+      age: '',
+      address: {
+        city: '',
+        street: '',
+        postCode: ''
+            }
+    });
+  }
 
-  onSubmit(post) {
-    this.post = post;
+  save() {
+    const { name, surname, age } = this.form.value;
+    this._personService.save({
+    firstName: '',
+    familyName: '',
+    age,
+    address: {
+city: '',
+street: '',
+postCode: ''
+    }
+});
+  }
+
+  clearInfo() {
+    this._personService.clearInfo();
+  }
+
+  clearAll() {
+    this._personService.clearAllLocalStorage();
   }
 }
