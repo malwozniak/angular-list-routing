@@ -11,7 +11,7 @@ export class AddPersonComponent implements OnInit {
   form: FormGroup;
   titleAlert: string = 'This field is required';
   myInfo$ = this._personService.myData;
- 
+
   constructor(
     private formBuilder: FormBuilder,
     private _personService: PersonService
@@ -30,23 +30,24 @@ export class AddPersonComponent implements OnInit {
       address: {
         city: '',
         street: '',
-        postCode: ''
-            }
+        postCode: '',
+      },
     });
   }
 
   save() {
-    const { name, surname, age } = this.form.value;
+    const { firstName, familyName, age, city, street, postCode } =
+      this.form.value;
     this._personService.save({
-    firstName: '',
-    familyName: '',
-    age,
-    address: {
-city: '',
-street: '',
-postCode: ''
-    }
-});
+      firstName,
+      familyName,
+      age,
+      address: {
+        city,
+        street,
+        postCode,
+      },
+    });
   }
 
   clearInfo() {
