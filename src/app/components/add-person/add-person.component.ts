@@ -54,7 +54,5 @@ export class AddPersonComponent implements OnInit {
     this._personService.clearInfo();
   }
 
-  clearAll() {
-    this._personService.clearAllLocalStorage();
-  }
+
 }
