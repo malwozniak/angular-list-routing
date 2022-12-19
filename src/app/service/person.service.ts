@@ -9,8 +9,8 @@ import { LocalStorageRefService } from './local-storage-ref-service.service';
 })
 export class PersonService {
   private _localStorage: Storage;
-  private _myData = new BehaviorSubject<Person>(null);
-  myData = this._myData.asObservable();
+  private _Person = new BehaviorSubject<Person>(null);
+  Person$ = this._Person.asObservable();
 
   constructor(private _localStorageRefService: LocalStorageRefService) {
     this._localStorage = _localStorageRefService.localStorage;
@@ -19,7 +19,7 @@ export class PersonService {
   save(data: Person): void {
     const jsonData = JSON.stringify(data);
     this._localStorage.setItem('Person', jsonData);
-    this._myData.next(data);
+    this._Person.next(data);
   }
   getById(data: string) {
     var fromStorage = JSON.parse(this._localStorage.getItem('Person'));
@@ -46,16 +46,16 @@ export class PersonService {
   }
   loadInfo(): void {
     const data = JSON.parse(this._localStorage.getItem('Person'));
-    this._myData.next(data);
+    this._Person.next(data);
   }
 
   clearInfo() {
     this._localStorage.removeItem('Person');
-    this._myData.next(null);
+    this._Person.next(null);
   }
 
   clearAllLocalStorage(): void {
     this._localStorage.clear();
-    this._myData.next(null);
+    this._Person.next(null);
   }
 }

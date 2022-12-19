@@ -1,23 +1,4 @@
-<div *ngIf="myInfo$ | async as myInfo">
-  firstName: {{ myInfo?.firstName || 'no firstName set' }}
-  <br />
-  familyName: {{ myInfo?.familyName || 'no familyName set' }}
-
-  <br />
-  age: {{ myInfo?.age || 'no age set' }}
-  <br />
-  <hr />
-  city: {{ myInfo?.address.city || 'no city set' }}
-  <br />
-  street: {{ myInfo?.address.street || 'no street set' }}
-
-  <br />
-  postCode: {{ myInfo?.address.postCode || 'no postCode set' }}
-  <br />
-  <hr />
-</div>
-<div></div>
-<form *ngIf="form" [formGroup]="form" class="form">
+<!-- <form *ngIf="form" [formGroup]="form" class="form">
   <mat-toolbar>
     <span>Podaj dane nowej osoby</span>
   </mat-toolbar>
@@ -53,4 +34,63 @@
     </mat-form-field>
   </div>
   <button mat-button color="primary" routerLink="save()">Zapisz</button>
+</form> -->
+<form [formGroup]="form">
+  <div class="form-group">
+    <label for="firstName">FirstName</label>
+    <input
+      type="text"
+      id="firstName"
+      formControlName="firstName"
+      class="form-control"
+    />
+  </div>
+  <div class="form-group">
+    <label for="familyName">FamilyName</label>
+    <input
+      type="text"
+      id="familyName"
+      formControlName="familyName"
+      class="form-control"
+    />
+  </div>
+  <div class="form-group">
+    <label for="age">Age</label>
+    <input type="number" id="age" formControlName="age" class="form-control" />
+  </div>
+  <div formGroupName="address">
+    <div class="form-group">
+      <label for="city">City</label>
+      <input
+        type="text"
+        id="city"
+        value="city"
+        formControlName="city"
+        class="form-control"
+      />
+    </div>
+    <div class="form-group">
+      <label for="street">Street</label>
+      <input
+        type="text"
+        id="street"
+        value="street"
+        formControlName="street"
+        class="form-control"
+      />
+    </div>
+    <div class="form-group">
+      <label for="postCode">postCode</label>
+      <input
+        type="text"
+        id="postCode"
+        value="postCode"
+        formControlName="postCode"
+        class="form-control"
+      />
+    </div>
+  </div>
+  <button mat-button color="primary" routerLink="../list" (click)="save()">
+    Zapisz
+  </button>
 </form>

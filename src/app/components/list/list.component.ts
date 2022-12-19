@@ -7,7 +7,7 @@ import { PersonService } from '../../service/person.service';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  myInfo$ = this._personService.myData;
+  myInfo$ = this._personService.Person$;
  
   constructor(  private _personService: PersonService) { }
 

@@ -9,9 +9,13 @@ import { PersonService } from '../../service/person.service';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent implements OnInit {
-  myInfo$ = this._personService.myData;
+  myInfo$ = this._personService.Person$;
 
-  constructor(private _personService: PersonService, private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private _personService: PersonService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {

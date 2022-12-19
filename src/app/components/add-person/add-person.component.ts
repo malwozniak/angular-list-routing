@@ -10,7 +10,7 @@ import { PersonService } from '../../service/person.service';
 export class AddPersonComponent implements OnInit {
   form: FormGroup;
   titleAlert: string = 'This field is required';
-  myInfo$ = this._personService.myData;
+  myInfo$ = this._personService.Person$;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,7 +26,7 @@ export class AddPersonComponent implements OnInit {
     this.form = this.formBuilder.group({
       firstName: ['', Validators.required],
       familyName: ['', Validators.required],
-      age: [],
+      age: '',
       address: this.formBuilder.group({
         city: ['', Validators.required],
         street: ['', Validators.required],
