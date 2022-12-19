@@ -1,16 +1,32 @@
 <table class="mat-elevation-z8">
   <thead class="thead-light">
     <tr>
-      <th>number</th>
-      <th>User Name</th>
+      <th>Id</th>
+      <th>FirstName</th>
+      <th>FamilyName</th>
+      <th>Age</th>
+      <th>City</th>
+      <th>Street</th>
+      <th>PostCode</th>
       <th>Delete User</th>
     </tr>
   </thead>
-  <tr *ngFor="let i of personList; index as personNumber">
+  <tr *ngFor="let i of personList$; index as personNumber">
     <td>{{ personNumber + 1 }}</td>
-    <td>{{ i }}</td>
+    <td>{{ i.firstName }}</td>
+    <td>{{ i.familyName }}</td>
+    <td>{{ i.age }}</td>
+    <td>{{ i.address.city }}</td>
+    <td>{{ i.address.street }}</td>
+    <td>{{ i.address.postCode }}</td>
+
     <td>
-      <button (click)="ondelete(personNumber)" class="btn btn-success">
+      <button
+        mat-button
+        color="warn"
+        (click)="ondelete(personNumber)"
+        class="btn btn-success"
+      >
         Remove User
       </button>
     </td>

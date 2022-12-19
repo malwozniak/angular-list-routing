@@ -11,7 +11,8 @@ import { PersonService } from '../../service/person.service';
 })
 export class DetailsComponent implements OnInit {
   myInfo$ = this._personService.Person$;
-personList: Person[] =[];
+  personList$ = this._personService.personList;
+
   constructor(
     private _personService: PersonService,
     private route: ActivatedRoute,
@@ -23,13 +24,12 @@ personList: Person[] =[];
       console.log(params['id']);
       console.log(params);
     });
+    console.log('llll', this.personList$);
   }
 
- 
-  ondelete(deleteme){
-    this.personList.splice(deleteme,1)
+  ondelete(deleteme) {
+    this.personList$.splice(deleteme, 1);
   }
-
 
   public goHome() {
     this.router.navigate(['/details', 2]);

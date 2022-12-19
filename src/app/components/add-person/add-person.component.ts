@@ -57,13 +57,6 @@ export class AddPersonComponent implements OnInit {
         postCode,
       },
     });
-    this.person = firstName;
-    this.person.familyName = familyName;
-    this.person.age = age;
-    this.person.address.city = city;
-    this.person.address.street = street;
-    this.person.address.postCode = postCode;
-    console.log(this.person);
   }
 
   clearInfo() {

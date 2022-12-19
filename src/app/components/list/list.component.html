@@ -1,4 +1,4 @@
-<table mat-tale *ngIf="myInfo$ | async as myInfo">
+<table mat-table *ngIf="myInfo$ | async as myInfo">
   firstName:
   {{
     myInfo?.firstName || 'no firstName set'
@@ -10,7 +10,6 @@
   }}
   <br />
   <hr />
-  <br />
   City:
   {{
     myInfo?.address.city || 'no city set'
