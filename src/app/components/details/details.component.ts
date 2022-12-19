@@ -1,6 +1,7 @@
 import { parallel } from '@angular/cdk/testing';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Person } from '../../interface/person';
 import { PersonService } from '../../service/person.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { PersonService } from '../../service/person.service';
 })
 export class DetailsComponent implements OnInit {
   myInfo$ = this._personService.Person$;
-
+personList: Person[] =[];
   constructor(
     private _personService: PersonService,
     private route: ActivatedRoute,
@@ -23,6 +24,12 @@ export class DetailsComponent implements OnInit {
       console.log(params);
     });
   }
+
+ 
+  ondelete(deleteme){
+    this.personList.splice(deleteme,1)
+  }
+
 
   public goHome() {
     this.router.navigate(['/details', 2]);

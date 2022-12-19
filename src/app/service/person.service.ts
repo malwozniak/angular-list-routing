@@ -11,14 +11,18 @@ export class PersonService {
   private _localStorage: Storage;
   private _Person = new BehaviorSubject<Person>(null);
   Person$ = this._Person.asObservable();
-
+  personList: Person[] = [];
   constructor(private _localStorageRefService: LocalStorageRefService) {
     this._localStorage = _localStorageRefService.localStorage;
   }
 
   save(data: Person): void {
+    const personList: Person[] = [];
+
     const jsonData = JSON.stringify(data);
     this._localStorage.setItem('Person', jsonData);
+    personList.push(data);
+    console.log(personList);
     this._Person.next(data);
   }
   getById(data: string) {

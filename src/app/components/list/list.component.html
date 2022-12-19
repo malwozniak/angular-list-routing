@@ -1,20 +1,22 @@
+<table mat-tale *ngIf="myInfo$ | async as myInfo">
+  firstName:
+  {{
+    myInfo?.firstName || 'no firstName set'
+  }}
+  <br />
+  familyName:
+  {{
+    myInfo?.familyName || 'no familyName set'
+  }}
+  <br />
+  <hr />
+  <br />
+  City:
+  {{
+    myInfo?.address.city || 'no city set'
+  }}
+</table>
 <button mat-button color="primary" routerLink="/add">Add</button>
-<div *ngIf="myInfo$ | async as myInfo">
-  firstName: {{ myInfo?.firstName || 'no firstName set' }}
-  <br />
-  familyName: {{ myInfo?.familyName || 'no familyName set' }}
-
-  <br />
-  age: {{ myInfo?.age || 'no age set' }}
-  <br />
-  <hr />
-  city: {{ myInfo?.address.city || 'no city set' }}
-  <br />
-  street: {{ myInfo?.address.street || 'no street set' }}
-
-  <br />
-  postCode: {{ myInfo?.address.postCode || 'no postCode set' }}
-  <br />
-  <hr />
-</div>
-<div></div>
+<button mat-button color="primary" [routerLink]="['../details/0']">
+  Details
+</button>

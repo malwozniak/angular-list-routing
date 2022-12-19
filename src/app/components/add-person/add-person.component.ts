@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import addressForm from '@angular/material/schematics/ng-generate/address-form';
+import { Person } from '../../interface/person';
 import { PersonService } from '../../service/person.service';
 
 @Component({
@@ -11,6 +13,9 @@ export class AddPersonComponent implements OnInit {
   form: FormGroup;
   titleAlert: string = 'This field is required';
   myInfo$ = this._personService.Person$;
+  person: Person = {
+    address: {},
+  };
 
   constructor(
     private formBuilder: FormBuilder,
@@ -18,7 +23,6 @@ export class AddPersonComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this._personService.clearAllLocalStorage();
     this._initForm();
   }
 
@@ -29,15 +33,20 @@ export class AddPersonComponent implements OnInit {
       age: '',
       address: this.formBuilder.group({
         city: ['', Validators.required],
-        street: ['', Validators.required],
-        postCode: ['', Validators.required],
+        street: [''],
+        postCode: [''],
       }),
     });
   }
 
   save() {
-    const { firstName, familyName, age, city, street, postCode } =
-      this.form.value;
+    const {
+      firstName,
+      familyName,
+      age,
+      address: { city, street, postCode },
+    } = this.form.value;
+    console.log(city);
     this._personService.save({
       firstName,
       familyName,
@@ -48,6 +57,13 @@ export class AddPersonComponent implements OnInit {
         postCode,
       },
     });
+    this.person = firstName;
+    this.person.familyName = familyName;
+    this.person.age = age;
+    this.person.address.city = city;
+    this.person.address.street = street;
+    this.person.address.postCode = postCode;
+    console.log(this.person);
   }
 
   clearInfo() {

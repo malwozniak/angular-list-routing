@@ -1,0 +1,19 @@
+<table class="mat-elevation-z8">
+  <thead class="thead-light">
+    <tr>
+      <th>number</th>
+      <th>User Name</th>
+      <th>Delete User</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let i of personList; index as personNumber">
+    <td>{{ personNumber + 1 }}</td>
+    <td>{{ i }}</td>
+    <td>
+      <button (click)="ondelete(personNumber)" class="btn btn-success">
+        Remove User
+      </button>
+    </td>
+  </tr>
+  <button mat-button color="warn" [routerLink]="'../../list'">Return</button>
+</table>
