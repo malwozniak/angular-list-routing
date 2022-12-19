@@ -11,6 +11,8 @@ import { DetailsComponent } from './components/details/details.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ListComponent } from './components/list/list.component';
 import { LocalStorageRefService } from './service/local-storage-ref-service.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   imports: [
     BrowserModule,
@@ -20,6 +22,8 @@ import { LocalStorageRefService } from './service/local-storage-ref-service.serv
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   declarations: [
     AppComponent,
