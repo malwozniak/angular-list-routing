@@ -12,22 +12,22 @@ import { PersonService } from '../../service/person.service';
 export class DetailsComponent implements OnInit {
   myInfo$ = this._personService.Person$;
   personList$ = this._personService.personList;
-
   constructor(
     private _personService: PersonService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
-
+  property: number = 1;
+  index: number = 0;
+  increment_property(): void {
+    this.property++;
+  }
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       console.log(params['id']);
       console.log(params);
+      this.index = params['id'];
     });
-    console.log('llll', this.personList$);
-  }
-
-  public goHome() {
-    this.router.navigate(['/details', 2]);
+    console.log(this.index);
   }
 }

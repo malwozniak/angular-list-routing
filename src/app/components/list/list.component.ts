@@ -14,7 +14,11 @@ export class ListComponent implements OnInit {
   constructor(private _personService: PersonService) {}
 
   ngOnInit() {}
-  ondelete(deleteme) {
-    this.personList$.splice(deleteme, 1);
+  onDelete(deleteme) {
+    // this.personList$.splice(deleteme, 1);
+    this._personService.removeById(deleteme);
+  }
+  findDetail(valueTofind) {
+    this._personService.findById(valueTofind);
   }
 }

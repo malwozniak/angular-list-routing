@@ -1,4 +1,5 @@
 <table class="mat-elevation-z8">
+<tr *ngFor="let i of personList$; index as personNumber">
   <thead class="thead-light">
     <tr>
       <th>FirstName</th>
@@ -7,7 +8,7 @@
       <th>Delete User</th>
     </tr>
   </thead>
-  <tr *ngFor="let i of personList$; index as personNumber">
+  <tbody>
     <td>{{ i.firstName }}</td>
     <td>{{ i.familyName }}</td>
 
@@ -16,6 +17,7 @@
         mat-button
         color="primary"
         [routerLink]="['../details', personNumber]"
+        (click)="findDetail(personNumber)"
       >
         Details
       </button>
@@ -24,13 +26,14 @@
       <button
         mat-button
         color="warn"
-        (click)="ondelete(personNumber)"
+        (click)="onDelete(personNumber)"
         class="btn btn-success"
       >
         Remove User
       </button>
     </td>
-  </tr>
+  </tbody>
+</tr>
 </table>
 
 <button mat-button color="primary" routerLink="/add">Add</button>

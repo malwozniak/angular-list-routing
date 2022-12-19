@@ -36,30 +36,39 @@
   <button mat-button color="primary" routerLink="save()">Zapisz</button>
 </form> -->
 <form [formGroup]="form">
-  <div class="form-group">
-    <label for="firstName">FirstName</label>
-    <input
+<mat-toolbar>
+<span>Please fill the form</span>
+</mat-toolbar>
+ 
+<mat-form-field class="form-element">
+    <mat-label for="firstName">FirstName</mat-label>
+    <input matInput
       type="text"
       id="firstName"
       formControlName="firstName"
       class="form-control"
     />
-  </div>
-  <div class="form-group">
-    <label for="familyName">FamilyName</label>
-    <input
+</mat-form-field>
+ 
+<mat-form-field class="form-element">
+    <mat-label for="familyName">FamilyName</mat-label>
+    <input mat-Input
       type="text"
       id="familyName"
       formControlName="familyName"
       class="form-control"
     />
-  </div>
-  <div class="form-group">
-    <label for="age">Age</label>
-    <input type="number" id="age" formControlName="age" class="form-control" />
-  </div>
+</mat-form-field>
+
+<mat-form-field class="form-element">
+    <mat-label for="age">Age</mat-label>
+    <input matInput type="number" id="age" formControlName="age" class="form-control" />
+</mat-form-field>
   <div formGroupName="address">
-    <div class="form-group">
+<mat-toolbar>
+  <span>Address</span>
+</mat-toolbar>
+  <mat-form-field class="form-element">
       <label for="city">City</label>
       <input
         type="text"
@@ -68,8 +77,9 @@
         formControlName="city"
         class="form-control"
       />
-    </div>
-    <div class="form-group">
+  </mat-form-field>
+    
+  <mat-form-field class="form-element">
       <label for="street">Street</label>
       <input
         type="text"
@@ -78,8 +88,9 @@
         formControlName="street"
         class="form-control"
       />
-    </div>
-    <div class="form-group">
+  </mat-form-field>
+   
+  <mat-form-field class="form-element">
       <label for="postCode">postCode</label>
       <input
         type="text"
@@ -88,7 +99,7 @@
         formControlName="postCode"
         class="form-control"
       />
-    </div>
+  </mat-form-field>
   </div>
   <button mat-button color="primary" routerLink="../list" (click)="save()">
     Zapisz

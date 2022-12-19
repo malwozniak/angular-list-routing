@@ -17,38 +17,39 @@ export class PersonService {
   }
 
   save(data: Person): void {
-    const jsonData = JSON.stringify(data);
-    this._localStorage.setItem('Person', jsonData);
     this.personList.push(data);
+    const jsonData = JSON.stringify(this.personList);
+
+    this._localStorage.setItem('Person', jsonData);
+    console.log('data: ', JSON.parse(jsonData));
     console.log(this.personList);
     this._Person.next(data);
   }
-  getById(data: string) {
-    var fromStorage = JSON.parse(this._localStorage.getItem('Person'));
-    var toFind = fromStorage.filter(function (obj) {
-      return obj.code == data;
+  findById(valueTofind) {
+    var fromStorage = this._localStorage.getItem('Person');
+
+    var objectsFromStorage = JSON.parse(fromStorage);
+
+    objectsFromStorage.filter(function (obj) {
+      return obj.code == valueTofind;
     });
+    var stringToStore = JSON.stringify(objectsFromStorage);
+    this._localStorage.setItem('Person', stringToStore);
   }
+
   removeById(valueToFind) {
     var fromStorage = this._localStorage.getItem('Person');
     var objectsFromStorage = JSON.parse(fromStorage);
-    console.log(objectsFromStorage);
 
     var toFind = objectsFromStorage.filter(function (obj) {
       return obj.code == valueToFind;
     });
-
-    var index = objectsFromStorage.findIndex((x) => x.code === valueToFind);
-
-    if (index >= 0) {
-      objectsFromStorage.splice(index, 1);
+    if (valueToFind >= 0) {
+      objectsFromStorage.splice(valueToFind, 1);
+      this.personList.splice(valueToFind, 1);
       var stringToStore = JSON.stringify(objectsFromStorage);
       this._localStorage.setItem('Person', stringToStore);
     }
-  }
-  loadInfo(): void {
-    const data = JSON.parse(this._localStorage.getItem('Person'));
-    this._Person.next(data);
   }
 
   clearInfo() {
@@ -58,6 +59,7 @@ export class PersonService {
 
   clearAllLocalStorage(): void {
     this._localStorage.clear();
+    this.personList.length = 0;
     this._Person.next(null);
   }
 }

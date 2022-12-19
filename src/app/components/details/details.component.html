@@ -1,23 +1,22 @@
 <table class="mat-elevation-z8">
-  <thead class="thead-light">
-    <tr>
-      <th>Id</th>
-      <th>FirstName</th>
-      <th>FamilyName</th>
-      <th>Age</th>
-      <th>City</th>
-      <th>Street</th>
-      <th>PostCode</th>
-    </tr>
-  </thead>
-  <tr *ngFor="let i of personList$; index as personNumber">
-      <td>{{ personNumber + 1 }}</td>
-      <td>{{ i.firstName }}</td>
-      <td>{{ i.familyName }}</td>
-      <td>{{ i.age }}</td>
-      <td>{{ i.address.city }}</td>
-      <td>{{ i.address.street }}</td>
-      <td>{{ i.address.postCode }}</td>
-  </tr>
-  <button mat-button color="warn" [routerLink]="'../../list'">Return</button>
+<div *ngFor="let i of personList$; index as personNumber">
+  <div *ngIf="personNumber == index">
+    <h3>Basic Information</h3>
+    {{ increment_property() }}
+    FirstName: {{ i.firstName || 'no firstName set' }}
+    <br />
+    FamilyName: {{ i.familyName || 'no familyName set' }}
+    <br />
+    Age: {{ i.age || 'no age set' }}
+    <br />
+    <hr />
+    <h3>Address</h3>
+    City: {{ i.address.city || 'no city set' }}
+    <br />
+    Street: {{ i.address.street || 'no street set' }}
+    <br />
+    PostCode: {{ i.address.postCode || 'no postCode set' }} <br />
+  </div>
+</div>
+<button mat-button color="warn" [routerLink]="'../../list'">Return</button>
 </table>
