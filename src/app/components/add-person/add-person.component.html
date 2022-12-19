@@ -1,20 +1,39 @@
-<mat-toolbar>
-  <span>Podaj dane nowej osoby</span>
-</mat-toolbar>
+<div *ngIf="myInfo$ | async as myInfo">
+  firstName: {{ myInfo?.firstName || 'no firstName set' }}
+  <br />
+  familyName: {{ myInfo?.familyName || 'no familyName set' }}
+
+  <br />
+  age: {{ myInfo?.age || 'no age set' }}
+  <br />
+  <hr />
+  city: {{ myInfo?.address.city || 'no city set' }}
+  <br />
+  street: {{ myInfo?.address.street || 'no street set' }}
+
+  <br />
+  postCode: {{ myInfo?.address.postCode || 'no postCode set' }}
+  <br />
+  <hr />
+</div>
+<div></div>
 <form *ngIf="form" [formGroup]="form" class="form">
-  <mat-form-field class="form-element">
+  <mat-toolbar>
+    <span>Podaj dane nowej osoby</span>
+  </mat-toolbar>
+  <mat-form-field class="form-element" formGroupName="firstName">
     <mat-label>Imię</mat-label>
-    <input matInput formControlName="name" formGroupName="name" />
+    <input matInput formControlName="firstName" />
   </mat-form-field>
 
-  <mat-form-field class="form-element">
+  <mat-form-field class="form-element" formGroupName="familyName">
     <mat-label>Nazwisko</mat-label>
-    <input matInput formControlName="surname" formGroupName="surname" />
+    <input matInput formControlName="familyName" />
   </mat-form-field>
 
-  <mat-form-field class="form-element">
+  <mat-form-field class="form-element" formGroupName="age">
     <mat-label>Age</mat-label>
-    <input matInput type="number" formControlName="age" formGroupName="age" />
+    <input matInput type="number" formControlName="age" />
   </mat-form-field>
   <mat-form-field>
     <span>Adres</span>
@@ -22,15 +41,15 @@
 
   <mat-form-field class="form-element">
     <mat-label>Miasto</mat-label>
-    <input matInput formControlName="city" formGroupName="city" />
+    <input matInput formControlName="address" />
   </mat-form-field>
   <mat-form-field class="form-element">
     <mat-label>Ulica</mat-label>
-    <input matInput formControlName="street" formGroupName="street" />
+    <input matInput formControlName="address" />
   </mat-form-field>
   <mat-form-field class="form-element">
     <mat-label>Kod pocztowy</mat-label>
-    <input matInput formControlName="zip" formGroupName="zip" />
+    <input matInput formControlName="address" />
   </mat-form-field>
 
   <button mat-button color="primary" routerLink="save()">Zapisz</button>
