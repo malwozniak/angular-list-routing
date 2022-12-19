@@ -1,21 +1,36 @@
-<table mat-table *ngIf="myInfo$ | async as myInfo">
-  firstName:
-  {{
-    myInfo?.firstName || 'no firstName set'
-  }}
-  <br />
-  familyName:
-  {{
-    myInfo?.familyName || 'no familyName set'
-  }}
-  <br />
-  <hr />
-  City:
-  {{
-    myInfo?.address.city || 'no city set'
-  }}
+<table class="mat-elevation-z8">
+  <thead class="thead-light">
+    <tr>
+      <th>FirstName</th>
+      <th>FamilyName</th>
+      <th>Details</th>
+      <th>Delete User</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let i of personList$; index as personNumber">
+    <td>{{ i.firstName }}</td>
+    <td>{{ i.familyName }}</td>
+
+    <td>
+      <button
+        mat-button
+        color="primary"
+        [routerLink]="['../details', personNumber]"
+      >
+        Details
+      </button>
+    </td>
+    <td>
+      <button
+        mat-button
+        color="warn"
+        (click)="ondelete(personNumber)"
+        class="btn btn-success"
+      >
+        Remove User
+      </button>
+    </td>
+  </tr>
 </table>
+
 <button mat-button color="primary" routerLink="/add">Add</button>
-<button mat-button color="primary" [routerLink]="['../details/0']">
-  Details
-</button>

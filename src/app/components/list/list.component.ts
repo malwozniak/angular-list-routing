@@ -9,7 +9,12 @@ import { PersonService } from '../../service/person.service';
 })
 export class ListComponent implements OnInit {
   myInfo$ = this._personService.Person$;
+
+  personList$ = this._personService.personList;
   constructor(private _personService: PersonService) {}
 
   ngOnInit() {}
+  ondelete(deleteme) {
+    this.personList$.splice(deleteme, 1);
+  }
 }

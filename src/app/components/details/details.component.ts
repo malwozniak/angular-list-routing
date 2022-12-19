@@ -27,10 +27,6 @@ export class DetailsComponent implements OnInit {
     console.log('llll', this.personList$);
   }
 
-  ondelete(deleteme) {
-    this.personList$.splice(deleteme, 1);
-  }
-
   public goHome() {
     this.router.navigate(['/details', 2]);
   }
