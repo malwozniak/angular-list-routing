@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PersonService } from '../../service/person.service';
 
 @Component({
@@ -24,14 +24,14 @@ export class AddPersonComponent implements OnInit {
 
   private _initForm() {
     this.form = this.formBuilder.group({
-      firstName: '',
-      familyName: '',
-      age: '',
-      address: {
-        city: '',
-        street: '',
-        postCode: '',
-      },
+      firstName: ['', Validators.required],
+      familyName: ['', Validators.required],
+      age: [],
+      address: this.formBuilder.group({
+        city: ['', Validators.required],
+        street: ['', Validators.required],
+        postCode: ['', Validators.required],
+      }),
     });
   }
 
@@ -53,6 +53,4 @@ export class AddPersonComponent implements OnInit {
   clearInfo() {
     this._personService.clearInfo();
   }
-
-
 }

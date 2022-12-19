@@ -26,31 +26,31 @@
     <input matInput formControlName="firstName" />
   </mat-form-field>
 
-  <mat-form-field class="form-element" formGroupName="form">
+  <mat-form-field class="form-element">
     <mat-label>Nazwisko</mat-label>
     <input matInput formControlName="familyName" />
   </mat-form-field>
 
-  <mat-form-field class="form-element" formGroupName="age">
+  <mat-form-field class="form-element">
     <mat-label>Age</mat-label>
     <input matInput type="number" formControlName="age" />
   </mat-form-field>
   <mat-form-field>
     <span>Adres</span>
   </mat-form-field>
-
-  <mat-form-field class="form-element">
-    <mat-label>Miasto</mat-label>
-    <input matInput formControlName="address" />
-  </mat-form-field>
-  <mat-form-field class="form-element">
-    <mat-label>Ulica</mat-label>
-    <input matInput formControlName="address" />
-  </mat-form-field>
-  <mat-form-field class="form-element">
-    <mat-label>Kod pocztowy</mat-label>
-    <input matInput formControlName="address" />
-  </mat-form-field>
-
+  <div formGroupName="address">
+    <mat-form-field class="form-element">
+      <mat-label>Miasto</mat-label>
+      <input matInput formControlName="city" />
+    </mat-form-field>
+    <mat-form-field class="form-element">
+      <mat-label>Ulica</mat-label>
+      <input matInput formControlName="street" />
+    </mat-form-field>
+    <mat-form-field class="form-element">
+      <mat-label>Kod pocztowy</mat-label>
+      <input matInput formControlName="postCode" />
+    </mat-form-field>
+  </div>
   <button mat-button color="primary" routerLink="save()">Zapisz</button>
 </form>
