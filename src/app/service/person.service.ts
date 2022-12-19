@@ -16,6 +16,10 @@ export class PersonService {
     this._localStorage = _localStorageRefService.localStorage;
   }
 
+  loadInfo(): void {
+    const data = JSON.parse(this._localStorage.getItem("Person"));
+    this._Person.next(data);
+  }
   save(data: Person): void {
     this.personList.push(data);
     const jsonData = JSON.stringify(this.personList);
